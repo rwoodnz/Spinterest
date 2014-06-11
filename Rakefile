@@ -1,4 +1,6 @@
 require 'rake'
+require 'rspec/core/rake_task'
+
 
 require ::File.expand_path('../config/environment', __FILE__)
 
@@ -85,7 +87,7 @@ end
 
 namespace :db do
   desc "Drop, create, and migrate the database"
-  task :reset => [:drop, :create, :migrate]
+  task :reset => [:drop, :create, :migrate, :seed]
 
   desc "Create the databases at #{DB_NAME}"
   task :create do
@@ -99,12 +101,22 @@ namespace :db do
     system("dropdb #{APP_NAME}_development && dropdb #{APP_NAME}_test")
   end
 
-  desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
   task :migrate do
-    ActiveRecord::Migrator.migrations_paths << File.dirname(__FILE__) + 'db/migrate'
+    puts 'Migrating development and test databases...'
+    ['development', 'test'].each do |env_to_migrate|
+      ENV['RACK_ENV'] = env_to_migrate
+      system "rake db:migrate_one"
+    end
+  end
+
+  desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
+  task :migrate_one do
     ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : true
     ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, ENV["VERSION"] ? ENV["VERSION"].to_i : nil) do |migration|
       ENV["SCOPE"].blank? || (ENV["SCOPE"] == migration.scope)
+    end
+    if ENV["RACK_ENV"] != 'test'
+      puts "Remember to run rake db:migrate RACK_ENV=test to migrate the test env"
     end
   end
 
@@ -118,6 +130,13 @@ namespace :db do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
   end
 
+  desc "rollback your migration--use STEPS=number to step back multiple times"
+  task :rollback do
+    steps = (ENV['STEPS'] || 1).to_i
+    ActiveRecord::Migrator.rollback('db/migrate', steps)
+    Rake::Task['db:version'].invoke if Rake::Task['db:version']
+  end
+
   namespace :test do
     desc "Migrate test database"
     task :prepare do
@@ -128,7 +147,12 @@ end
 
 desc 'Start IRB with application environment loaded'
 task "console" do
-  exec "irb -r./config/environment"
+  exec "pry -r./config/environment"
 end
 
+desc "Run the specs"
+RSpec::Core::RakeTask.new(:spec)
+
 task :default  => :spec
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'
