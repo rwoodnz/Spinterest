@@ -16,7 +16,7 @@ describe User do
     before { user.set_password('test') }
 
     it 'can set a password hash' do
-      expect(user.password_hash).to eq PasswordHasher.hash_password('test')
+      expect(user.password_hash).to eq PasswordHasher.hash_password('test', user.password_salt)
     end
 
     describe 'check password' do

@@ -1,5 +1,5 @@
-BANDNAMES = [ "Joy Division", "New Order", "The Smiths", "The Sisters of Mercy", "Wye Oak", "Thao and the Get Down Stay Down",
-          "Siouxsie and the Banshees", "Interpol", "Ted Leo and The Pharmacists", "The Impossibles", "The Promise Ring",
-          "Fugazi" ]
+user = User.create(username: 'test')
+user.set_password('pass')
 
-BANDNAMES.each{ |band_name| Band.create(name: band_name) }
+Pic.create(title: 'amazing cat', url: 'http://placekitten.com/200/200')
+Pic.create(title: 'super cat', url: 'http://placekitten.com/300/300')
