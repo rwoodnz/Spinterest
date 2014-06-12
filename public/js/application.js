@@ -1,4 +1,30 @@
 $(document).ready(function() {
+
+  $('form').on('submit', function(event){
+    event.preventDefault();
+    var formData = {
+      'title':  $('input[name=title]').val(),
+      'url':  $('input[name=url]').val()
+    };
+
+    $.ajax({
+      type: 'POST',
+      data: formData,
+      url: '/spun',
+      success: done
+    });
+
+    console.log(formData.title + ' ' + formData.url);
+    event.stopPropagation();
+
+  });
+
+  var done = function(data)
+  {
+    $('form').append(data["view"])
+  };
+
+
     var pictures = [];
 
     function addPicture (title, url){
