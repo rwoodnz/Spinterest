@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -13,11 +13,22 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Spinterest</title>
 </head>
 <body>
+  <div class="header">
+    <% if @user.nil? %>
+        <form action="/login" method="post">
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <input type="submit" value="login">
+        </form>
+      </div>
+    <% else %>
+      <div>Logged in as <%= @user.username %></div>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>

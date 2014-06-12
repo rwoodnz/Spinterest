@@ -1,7 +1,24 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+    var pictures = [];
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    function addPicture (title, url){
+      model = new Picture(title, url);
+      view = new PictureView();
+
+      $('.pics').append(view.$div);
+
+      controller = new PictureController(model, view);
+
+      pictures.push(controller);
+    }
+
+    $.getJSON('/spuns', function(spun_data) {
+
+      spun_json = JSON.parse(spun_data);
+
+      $.each(spun_json, function(index, spin) {
+        addPicture(spin.title, spin.url);
+      });
+    });
+
 });
