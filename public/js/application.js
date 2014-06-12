@@ -1,6 +1,7 @@
 $(document).ready(function() {
+  var pictures = [];
 
-  $('form').on('submit', function(event){
+  $('#new-post-form').on('submit', function(event){
     event.preventDefault();
     var formData = {
       'title':  $('input[name=title]').val(),
@@ -13,38 +14,34 @@ $(document).ready(function() {
       url: '/spun',
       success: done
     });
-
-    console.log(formData.title + ' ' + formData.url);
     event.stopPropagation();
 
   });
 
   var done = function(data)
   {
-    $('form').append(data["view"])
+    data = JSON.parse(data);
+    addPicture(data['title'], data['url']);
   };
 
+  function addPicture (title, url){
+    model = new Picture(title, url);
+    view = new PictureView();
 
-    var pictures = [];
+    $('.pics').prepend(view.$div);
 
-    function addPicture (title, url){
-      model = new Picture(title, url);
-      view = new PictureView();
+    controller = new PictureController(model, view);
 
-      $('.pics').append(view.$div);
+    pictures.push(controller);
+  }
 
-      controller = new PictureController(model, view);
+  $.getJSON('/spuns', function(spun_data) {
 
-      pictures.push(controller);
-    }
+    spun_json = JSON.parse(spun_data);
 
-    $.getJSON('/spuns', function(spun_data) {
-
-      spun_json = JSON.parse(spun_data);
-
-      $.each(spun_json, function(index, spin) {
-        addPicture(spin.title, spin.url);
-      });
+    $.each(spun_json, function(index, spin) {
+      addPicture(spin.title, spin.url);
     });
+  });
 
 });
