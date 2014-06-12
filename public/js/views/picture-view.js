@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  $('form').on('submit', function(event){
+    event.preventDefault();
+    var tit = $(this).serialize();
+
+  })
+})
+
 function PictureView () {
 	this.$div = $('<div class="picture"></div>')
 	this.$title = $('<h2></h2>');
