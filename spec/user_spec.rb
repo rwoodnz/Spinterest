@@ -15,15 +15,19 @@ describe User do
 
     before { user.set_password('test') }
 
-    it 'can set a password' do
+    it 'can set a password hash' do
       expect(user.password_hash).to eq PasswordHasher.hash_password('test')
     end
 
-    it 'can check a password attempt' do
-      expect(user.check_password('test')).to be_true
+    describe 'check password' do
+
+      it 'returns true if correct password' do
+        expect(user.check_password('test')).to be_true
+      end
+
+      it 'returns false if password is wrong' do
+        expect(user.check_password('blah')).to be_false
+      end
     end
-
   end
-
-
 end
