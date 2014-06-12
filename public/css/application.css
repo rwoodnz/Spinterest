@@ -35,5 +35,20 @@ th {
 {
   background-color: #CF9EE6;
   padding: 10px;
+}
+
+.align-right
+{
   text-align: right;
+}
+
+.align-left
+{
+  float: left;
+  text-align: left;
+}
+
+.no-margin
+{
+  margin: 0px;
 }
