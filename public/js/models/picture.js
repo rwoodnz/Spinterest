@@ -1,10 +1,5 @@
-Picture = function(title, category, url) {
-	this.Title = title;
-	this.Category = category;
-	this.Url = url;
+function Picture (title, image_url) {
+	this.title = title;
+	this.image_url = image_url;
 }
 
-
-Picture.prototype.LoadPicture = function() {
-	this
-};
