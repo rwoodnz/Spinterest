@@ -18,29 +18,14 @@ $(document).ready(function() {
 
   });
 
-  $('.picture').on('click', '<img>', function(event){
-      event.preventDefault();
-      var formData = {
-        'pic id': $('click')
-      };
-
-      $.ajax({
-        type: 'POST',
-        data: formData,
-        url: '/favorite?num=' + formData,
-        success: done
-      });
-
-  });
-
   var done = function(data)
   {
     data = JSON.parse(data);
-    addPicture(data['title'], data['url']);
+    addPicture(data['id'], data['title'], data['url']);
   };
 
-  function addPicture (title, url){
-    model = new Picture(title, url);
+  function addPicture (id, title, url){
+    model = new Picture(id, title, url);
     view = new PictureView();
 
     $('.pics').prepend(view.$div);
@@ -55,7 +40,7 @@ $(document).ready(function() {
     spun_json = JSON.parse(spun_data);
 
     $.each(spun_json, function(index, spin) {
-      addPicture(spin.title, spin.url);
+      addPicture(spin.id, spin.title, spin.url);
     });
   });
 
