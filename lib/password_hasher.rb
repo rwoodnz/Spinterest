@@ -1,8 +1,11 @@
-require 'digest'
+require 'bcrypt'
 
 module PasswordHasher
-  def self.hash_password(password)
-    sha256 = Digest::SHA256.new
-    sha256.digest password
+  def self.hash_password(password, salt)
+    ::BCrypt::Engine.hash_secret(password, salt)
+  end
+
+  def self.generate_salt
+    ::BCrypt::Engine.generate_salt
   end
 end
