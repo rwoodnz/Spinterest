@@ -23,4 +23,20 @@ describe 'Pic Controller' do
 
   end
 
+  it 'get to post pic content url' do
+
+    post '/spun'
+    expect(last_response).to be_ok
+
+  end
+
+  it 'post pic content' do
+    pic3 = double(:pic, to_hash: {title:'another cool cat', url: 'http://placekitten.com/302/302'})
+
+    Pic.stub(:create).and_return(pic3)
+    post '/spun', title:'another cool cat', url: 'http://placekitten.com/302/302'
+    expect(last_response.body).to include('another cool cat')
+
+  end
+
 end
