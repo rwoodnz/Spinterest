@@ -15,6 +15,12 @@ post '/login' do
   end
 end
 
+get '/logout' do
+  session[:user_id] = nil
+
+  redirect to '/'
+end
+
 def session_login(id)
   session[:user_id] = id
 end

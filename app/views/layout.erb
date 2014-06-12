@@ -26,7 +26,7 @@
         </form>
       </div>
     <% else %>
-      <div>Logged in as <%= @user.username %></div>
+      <div>Logged in as <%= @user.username %> - <a href='/logout'>Logout</a></div>
     <% end %>
   </div>
   <%= yield %>
