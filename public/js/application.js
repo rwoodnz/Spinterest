@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('form').on('submit', function(event){
+  $('#new-post-form').on('submit', function(event){
     event.preventDefault();
     var formData = {
       'title':  $('input[name=title]').val(),
@@ -13,15 +13,14 @@ $(document).ready(function() {
       url: '/spun',
       success: done
     });
-
-    console.log(formData.title + ' ' + formData.url);
     event.stopPropagation();
 
   });
 
   var done = function(data)
   {
-    $('form').append(data["view"])
+    console.log(data);
+    $('#new-post-form').append(data["view"]);
   };
 
 
