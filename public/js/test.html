@@ -5,7 +5,7 @@
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <title>Spinterest</title>
 </head>
-<body>	
+<body>
 	<div class="pics">
 	</div>
 </body>
@@ -13,10 +13,10 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="C:/Code/Spinterest/public/js/controllers/picture-controller.js"></script>
-<script type="text/javascript" src="C:/Code/Spinterest/public/js/models/categories.js"></script>
-<script type="text/javascript" src="C:/Code/Spinterest/public/js/models/picture.js"></script>
-<script type="text/javascript" src="C:/Code/Spinterest/public/js/views/picture-view.js"></script>
+<script type="text/javascript" src="file:///Users/apprentice/development/Spinterest/public/js/controllers/picture-controller.js"></script>
+<script type="text/javascript" src="file:///Users/apprentice/development/Spinterest/public/js/models/categories.js"></script>
+<script type="text/javascript" src="file:///Users/apprentice/development/Spinterest/public/js/models/picture.js"></script>
+<script type="text/javascript" src="file:///Users/apprentice/development/Spinterest/public/js/views/picture-view.js"></script>
 <!-- TODO: Fix the absolute links -->
 <script type="text/javascript">
 window.onload = function (){
@@ -35,8 +35,36 @@ window.onload = function (){
 
 	}
 
-	addPicture("testTitle", "file:///C:/Code/Spinterest/public/images/HelloZombie.jpg");
+	addPicture("testTitle", "file:///Users/apprentice/development/Spinterest/public/images/HelloZombie.jpg");
 	console.info("I'm working");
+
+	//talk to richard's api (but we'll just pretend for now)
+	// the api will give us an array of objects (in format of {title: blah, url: blah})
+	var apiResponse = [
+		{
+			title: 'Kitty',
+			url: 'http://placekitten.com/300/200'
+		},
+		{
+			title: 'I <3 CATS!!',
+			url: 'http://placekitten.com/400/400'
+		}
+	];
+
+	//for each object in the api response
+	//pull out the title and url
+	//call addPicture on the title and url
+
+	for( var i=0; i<apiResponse.length ; i++){
+		var title = apiResponse[i].title;
+		var url = apiResponse[i].url;
+
+		addPicture(title, url);
+	}
+
+
+
+
 }
 </script>
 
