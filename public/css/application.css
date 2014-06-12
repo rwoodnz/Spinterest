@@ -78,6 +78,7 @@ th {
 }
 
 .spinning {
-  -webkit-animation: spin 1s linear;
-  -moz-animation: spin 1s linear;
+  -webkit-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
+  -moz-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
+
 }
