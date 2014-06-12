@@ -1,12 +1,16 @@
 <div class="container">
-  <form>
-    <input type="text" name="title" placeholder="Title">
-    <br>
-    <input type="text" name="url" placeholder="URL">
-    <br>
-    <input type="submit" value="Post!">
-  </form>
-    <h2>Pictures</h2>
+  <% if @user %>
+  <div class="align-center">
+    <h3>New Pic</h3>
+    <form id="new-post-form">
+      <input type="text" name="title" placeholder="Title">
+      <br>
+      <input type="text" name="url" placeholder="URL">
+      <br>
+      <input type="submit" value="Post!">
+    </form>
+  </div>
+  <% end %>
     <div class="pics">
     </div>
   </form>
