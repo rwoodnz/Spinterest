@@ -5,7 +5,7 @@ describe 'Login Controller' do
   describe 'logging in' do
 
     before do
-      user = double(:user)
+      user = double(:user, id: 1)
       User.stub(:find_by_username).with('testuser') {user}
       user.stub(:check_password).with('blah') {false}
       user.stub(:check_password).with('test') {true}
