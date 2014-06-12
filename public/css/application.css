@@ -1,10 +1,39 @@
+body
+{
+  background-color: #76F63B;
+}
+
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+ margin-left: auto;
+ margin-right: auto;
+ width: 1000px;
+ padding: 0px 20px 20px 20px;
+ /*border: 1px dotted black;*/
 }
 
 th {
-  text-align: left;
+ text-align: left;
+}
+
+.picture{
+  width: auto;
+  float: left;
+  background-color: #CF9EE6;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.picture h2{
+  text-align: center;
+}
+
+.picture img{
+  margin: 5px;
+}
+
+.header
+{
+  background-color: #CF9EE6;
+  padding: 10px;
+  text-align: right;
 }
