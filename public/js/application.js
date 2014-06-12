@@ -19,6 +19,21 @@ $(document).ready(function() {
 
   });
 
+  $('.picture').on('click', '<img>', function(event){
+      event.preventDefault();
+      var formData = {
+        'pic id': $('click')
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: formData,
+        url: '/favorite?num=' + formData,
+        success: done
+      });
+
+  });
+
   var done = function(data)
   {
     $('form').append(data["view"])
