@@ -1,23 +1,44 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, <%= em("world!") %></p>
+  <h2>Spinterest</h2>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+    <h2>Pictures</h2>
+    <div class="pics">
+    </div>
+  </form>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/controllers/picture-controller.js"></script>
+<script type="text/javascript" src="/js/models/categories.js"></script>
+<script type="text/javascript" src="/js/models/picture.js"></script>
+<script type="text/javascript" src="/js/views/picture-view.js"></script>
+<!-- TODO: Fix the absolute links -->
+<script type="text/javascript">
+window.onload = function (){
+
+  var pictures = [];
+
+  function addPicture (title, url){
+    model = new Picture(title, url);
+    view = new PictureView();
+
+    $('.pics').append(view.$div);
+
+    controller = new PictureController(model, view);
+
+    pictures.push(controller);
+
+  }
+
+  addPicture("A Kitten", "http://placekitten.com/150/100");
+  addPicture("A Kitten", "http://placekitten.com/175/100");
+  addPicture("A Kitten", "http://placekitten.com/200/150");
+  addPicture("A Kitten", "http://placekitten.com/100/150");
+  addPicture("A Kitten", "http://placekitten.com/225/100");
+
+  addPicture("A Kitten", "http://placekitten.com/173/100");
+  addPicture("A Kitten", "http://placekitten.com/202/150");
+  addPicture("A Kitten", "http://placekitten.com/105/150");
+  addPicture("A Kitten", "http://placekitten.com/225/100");
+}
+</script>
