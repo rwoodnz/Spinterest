@@ -1,3 +1,7 @@
 class Pic < ActiveRecord::Base
-  # Remember to create a migration!
+
+  def self.latest_pics(num)
+    Pic.find(:all, :order => "id", :limit => num).reverse
+  end
+
 end

@@ -35,3 +35,5 @@ ActiveRecord::Base.establish_connection(
   :database => DB_NAME,
   :encoding => 'utf8'
 )
+
+ActiveRecord::Base.include_root_in_json = false
