@@ -13,10 +13,13 @@ describe 'Login Controller' do
 
     context 'correct credentials' do
 
-      it 'redirects you to profile page' do
+      before do
         post '/login', {username: 'testuser', password:'test'}
+      end
+
+      it 'redirects you to your previous page' do
         expect(last_response).to be_redirect
-        expect(last_response.location).to include '/profile'
+        expect(last_response.location).to eq 'http://example.org/login'
       end
     end
 

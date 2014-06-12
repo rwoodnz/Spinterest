@@ -18,15 +18,16 @@
 </head>
 <body>
   <div class="header">
+    <h2 class="align-left no-margin">Spinterest</h2>
     <% if @user.nil? %>
-        <form action="/login" method="post">
+        <form action="/login" method="post" class="align-right">
           <input type="text" name="username" placeholder="Username">
           <input type="password" name="password" placeholder="Password">
           <input type="submit" value="login">
         </form>
       </div>
     <% else %>
-      <div>Logged in as <%= @user.username %></div>
+      <div class="align-right">Logged in as <%= @user.username %> - <a href='/logout'>Logout</a></div>
     <% end %>
   </div>
   <%= yield %>
