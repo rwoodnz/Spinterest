@@ -17,10 +17,14 @@ PictureController.prototype.update = function() {
 	this.view.setImage(image_url);
 };
 
+PictureController.prototype.favorite = function() {
+  this.view.favorite();
+};
+
 PictureController.prototype.spin = function(event) {
 
   this.view.spinMe();
-  this.view.favourite();
+  this.view.favorite();
 
   $.ajax({
     type: 'POST',

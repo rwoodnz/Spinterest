@@ -26,13 +26,21 @@ $(document).ready(function() {
     wall.refresh();
   };
 
-  function addPicture (id, title, url){
+  function addPicture (id, title, url, favorited){
     model = new Picture(id, title, url);
     view = new PictureView();
 
     $('.pics').prepend(view.$div);
 
     controller = new PictureController(model, view);
+
+    console.log(favorited);
+
+    if (favorited)
+    {
+      console.log("Favorited " + title);
+      controller.favorite();
+    }
 
     pictures.push(controller);
   }
@@ -42,7 +50,8 @@ $(document).ready(function() {
     spun_json = JSON.parse(spun_data);
 
     $.each(spun_json, function(index, spin) {
-      addPicture(spin.id, spin.title, spin.url);
+      console.log(spin);
+      addPicture(spin.id, spin.title, spin.url, spin.favorited);
     });
 
     wall.fitWidth();
