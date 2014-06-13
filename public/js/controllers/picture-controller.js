@@ -18,26 +18,25 @@ PictureController.prototype.update = function() {
 };
 
 PictureController.prototype.spin = function(event) {
-  //spin the picture
-  // this.view.$image.on('click', spinning);
 
-  //send a post request to the server with the id
+  this.view.spinMe();
+
   $.ajax({
     type: 'POST',
-    data: this.model.id,
-    url: '/favorite?id=' + this.model.id,
-    success: spinBitch,
+    data: {'num': this.model.id},
+    url: '/favorite',
+    success: spinCatSPIN,
     error: notSpun
   });
   console.log(this.model.id);
   console.log('hi there');
 };
 
-var spinBitch = function(data)
+var spinCatSPIN = function(data)
 {
-  console.log('bitch has been spun!!');
+  console.log('CAT has been favorited!!');
 };
 
 var notSpun = function(){
-  console.log('Bitch was not spun');
+  console.log('CAT was not favorited');
 };

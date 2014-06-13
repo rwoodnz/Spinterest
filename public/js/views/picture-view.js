@@ -13,5 +13,14 @@ PictureView.prototype.setTitle = function(new_title) {
 
 PictureView.prototype.setImage = function(new_image_url) {
 	this.$image.attr("src", new_image_url);
-}
+};
+
+PictureView.prototype.spinMe = function() {
+  var myImage = this.$image;
+  this.$image.removeClass("spinning");
+  setTimeout(function(){
+    myImage.addClass("spinning");
+  }, 1);
+
+};
 
