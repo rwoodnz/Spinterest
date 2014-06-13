@@ -39,3 +39,4 @@ Pic.create(title: 'Rainbow Cate', url: 'http://24.media.tumblr.com/tumblr_luqgvy
 Pic.create(title: 'Prety Pony', url: 'http://media.giphy.com/media/1faY7T5mx64p2/giphy.gif')
 Pic.create(title: 'Come at me brah', url: 'http://media1.giphy.com/media/XnkqCp0gzHmyk/200.gif')
 Pic.create(title: 'Is on', url: 'http://media3.giphy.com/media/U1rlk8zdcAwbm/200.gif')
+

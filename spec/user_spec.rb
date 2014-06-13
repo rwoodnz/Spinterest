@@ -30,4 +30,17 @@ describe User do
       end
     end
   end
+
+  it 'favor status can be toggled' do
+    pic = Pic.create(title: 'Wow cat', url:'asdf')
+    user.save
+
+    user.toggle_favor(pic)
+
+    expect(pic.favorited_by_user?(user)).to be_true
+    user.toggle_favor(pic)
+
+    expect(pic.favorited_by_user?(user)).to be_false
+  end
+
 end
