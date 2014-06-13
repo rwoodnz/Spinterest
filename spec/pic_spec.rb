@@ -13,4 +13,6 @@ describe Pic do
     expect(pic.title).to eq 'coolcat'
   end
 
+
+
 end
