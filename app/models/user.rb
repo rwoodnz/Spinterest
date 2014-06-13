@@ -14,8 +14,13 @@ class User < ActiveRecord::Base
     self.password_hash == PasswordHasher.hash_password(password, password_salt)
   end
 
-  def favor(pic)
-    self.favorites << pic
+  def toggle_favor(pic)
+    if self.favorites.include?(pic)
+      self.favorites.delete(pic)
+    else
+      self.favorites << pic
+    end
+    self.save
   end
 
 end

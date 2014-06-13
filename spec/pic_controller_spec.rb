@@ -50,7 +50,7 @@ describe 'Pic Controller' do
       User.destroy_all
       Pic.destroy_all
       @bob = double(:user)
-      @bob.stub(:favor)
+      @bob.stub(:toggle_favor)
       User.stub(:find_by_id).and_return (@bob)
       @pic = double(:pic)
       @pic.stub(:id)
