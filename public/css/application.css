@@ -2,6 +2,7 @@ body
 {
   background-color: #62D99C;
   font-family: 'Ubuntu', sans-serif;
+  color: #303030;
 }
 
 .container {
@@ -64,4 +65,20 @@ th {
 .no-margin
 {
   margin: 0px;
+}
+
+@-webkit-keyframes spin {
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+
+.spinning {
+  -webkit-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
+  -moz-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
+
 }
