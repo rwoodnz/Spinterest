@@ -1,5 +1,5 @@
 function PictureView () {
-	this.$div = $('<div class="picture"></div>')
+	this.$div = $('<div class="picture shadow"></div>')
 	this.$title = $('<h2></h2>');
 	this.$category = $('<p></p>');
 	this.$image = $('<img src=""/>');
