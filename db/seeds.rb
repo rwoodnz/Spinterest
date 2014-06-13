@@ -21,3 +21,5 @@ end
 10.times do
   random_cat
 end
+
+Pic.create(title: "rainbow cat", url: "http://24.media.tumblr.com/tumblr_luqgvyxeHL1qdf3pto1_500.gif")
