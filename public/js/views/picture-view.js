@@ -16,10 +16,10 @@ PictureView.prototype.setImage = function(new_image_url) {
 };
 
 PictureView.prototype.spinMe = function() {
-  var myImage = this.$image;
-  this.$image.removeClass("spinning");
+  var elToSpin = this.$div;
+  elToSpin.removeClass("spinning");
   setTimeout(function(){
-    myImage.addClass("spinning");
+    elToSpin.addClass("spinning");
   }, 1);
 
 };

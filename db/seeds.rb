@@ -6,8 +6,8 @@ def random_cat
   good_word = good_words.sample
   cat_name = "#{good_word} cat"
 
-  width = [*150..300].sample
-  height = [*150..300].sample
+  width = [*100..200].sample
+  height = [*75..150].sample
 
   url = "http://placekitten.com/#{width}/#{height}"
 
