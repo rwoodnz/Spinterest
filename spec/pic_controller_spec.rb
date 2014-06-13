@@ -39,4 +39,39 @@ describe 'Pic Controller' do
 
   end
 
+  describe 'pic favoriting' do
+
+    before do
+      User.destroy_all
+      Pic.destroy_all
+      @bob = double(:user)
+      @bob.stub(:favor)
+      User.stub(:find_by_id).and_return (@bob)
+      @pic = double(:pic)
+      @pic.stub(:id)
+      Pic.stub(:find_by_id).and_return (@pic)
+
+    end
+
+    it 'get to favorite pic content url' do
+      post '/favorite', {num: @pic.id}
+      expect(last_response).to be_ok
+
+    end
+
+
+    it 'got successful confirmation message' do
+      post '/favorite', {num: @pic.id}
+      expect(last_response.status).to eq(200)
+    end
+
+    it 'got failed confirmation message' do
+      Pic.stub(:find_by_id)
+      post '/favorite', {num: 0}
+      expect(last_response.status).to eq(403)
+    end
+
+
+  end
+
 end
