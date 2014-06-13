@@ -18,8 +18,9 @@ th {
 }
 
 .picture{
-  width: auto;
-  float: left;
+  width: 200px;
+  height: 200px;
+  /*float: left;*/
   background-color: #00B358;
   margin: 10px;
   border-radius: 10px;
@@ -32,6 +33,14 @@ th {
 
 .picture img{
   margin: 5px;
+  max-width: 180px;
+  max-height: 120px;
+}
+
+.picture img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header
@@ -74,16 +83,22 @@ th {
 
 @-webkit-keyframes spin {
     0% {-webkit-transform: rotate(0deg);}
-    100% {-webkit-transform: rotate(360deg);}
+    100% {-webkit-transform: rotate(720deg);}
 }
 
 @-moz-keyframes spin {
     from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
+    to { -moz-transform: rotate(720deg); }
 }
 
 .spinning {
-  -webkit-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
-  -moz-animation: spin 1.5s cubic-bezier(0.25,0.1,0.25,1);
+  -webkit-animation: spin 1s cubic-bezier(0.25,0.1,0.25,1);
+  -moz-animation: spin 1s cubic-bezier(0.25,0.1,0.25,1);
 
+}
+
+.favourite
+{
+  box-shadow: 0px 0px 20px #FFFF00;
+  background-color: #04C1DE;
 }
