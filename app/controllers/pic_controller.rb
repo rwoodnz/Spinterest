@@ -9,7 +9,7 @@ get '/spuns' do
     pic[:favorited] = pic.favorited_by_user?(@user)
   end
 
-  json pics.to_json
+  json pics.reverse.to_json
 
 end
 

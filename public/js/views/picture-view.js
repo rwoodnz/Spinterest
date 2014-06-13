@@ -24,6 +24,6 @@ PictureView.prototype.spinMe = function() {
 
 };
 
-PictureView.prototype.favourite = function() {
-    this.$div.addClass('favourite');
+PictureView.prototype.favorite = function() {
+    this.$div.addClass('favorite');
 };
