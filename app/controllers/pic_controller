@@ -1,4 +1,0 @@
-get '/spuns/' do
-  num = params[:num]
-  p num
-end

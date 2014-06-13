@@ -13,3 +13,14 @@ post '/spun' do
   json Pic.create(title:title,url:url).to_json
 
 end
+
+post '/favorite' do
+  pic = Pic.find_by_id(params[:num])
+  @user.favor(pic)
+  if pic.nil?
+    status 403
+  else
+    status 200
+  end
+
+end
