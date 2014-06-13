@@ -12,14 +12,19 @@ describe 'Pic Controller' do
 
   it 'request pic content' do
 
-    pic = double(:pic, to_hash: {title: 'cat', url: 'asdf'})
 
-    pic2 = double(:pic, to_hash: {title:'kitty', url:'lkjk'})
+    pic = double(:pic, to_hash: {title: 'cat', url: 'asdf', favorited: true})
+    pic2 = double(:pic, to_hash: {title:'kitty', url:'lkjk', favorited: false})
     Pic.stub(:latest_pics).and_return([pic, pic2])
+    pic.stub(:favorited_by_user?).and_return(true)
+    pic2.stub(:favorited_by_user?).and_return(false)
+    pic.stub(:[]=)
+    pic2.stub(:[]=)
 
     get '/spuns?num=2'
     expect(last_response.body).to include('cat')
     expect(last_response.body).to include('lkjk')
+    expect(last_response.body).to include('favorited')
 
   end
 
@@ -58,7 +63,6 @@ describe 'Pic Controller' do
       expect(last_response).to be_ok
 
     end
-
 
     it 'got successful confirmation message' do
       post '/favorite', {num: @pic.id}
