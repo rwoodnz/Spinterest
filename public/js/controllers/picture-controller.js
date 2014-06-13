@@ -6,7 +6,7 @@ function PictureController(model, view)
 
 	this.update();
 
-  this.view.$image.on('click', $.proxy(this.spin, this));
+  this.view.$div.on('click', $.proxy(this.spin, this));
 }
 
 PictureController.prototype.update = function() {
@@ -20,6 +20,7 @@ PictureController.prototype.update = function() {
 PictureController.prototype.spin = function(event) {
 
   this.view.spinMe();
+  this.view.favourite();
 
   $.ajax({
     type: 'POST',

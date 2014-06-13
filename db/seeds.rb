@@ -1,6 +1,10 @@
 user = User.create(username: 'test')
 user.set_password('pass')
 
+
+user = User.create(username: 'Widdershin')
+user.set_password('pass')
+
 def random_cat
   good_words = ['amazing', 'super', 'wow', 'such', 'great', 'hardcore']
   good_word = good_words.sample

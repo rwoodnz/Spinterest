@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var pictures = [];
+  var wall = new freewall(".pics");
 
   $('#new-post-form').on('submit', function(event){
     event.preventDefault();
@@ -22,6 +23,7 @@ $(document).ready(function() {
   {
     data = JSON.parse(data);
     addPicture(data['id'], data['title'], data['url']);
+    wall.refresh();
   };
 
   function addPicture (id, title, url){
@@ -42,6 +44,9 @@ $(document).ready(function() {
     $.each(spun_json, function(index, spin) {
       addPicture(spin.id, spin.title, spin.url);
     });
+
+    wall.fitWidth();
+
   });
 
 });
