@@ -22,7 +22,7 @@ end
 
 post '/favorite' do
   pic = Pic.find_by_id(params[:num])
-  @user.favor(pic)
+  @user.toggle_favor(pic)
   if pic.nil?
     status 403
   else
